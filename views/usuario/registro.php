@@ -1,5 +1,6 @@
 <h1>Registrarse</h1>
 
+<!-- notificacion de registro completado correctamente o no una vez dado al boton de registrarse -->
 <?php if(isset($_SESSION['register']) && $_SESSION['register'] == 'complete'): ?>
 	<strong class="alert_green">Registro completado correctamente</strong>
 <?php elseif(isset($_SESSION['register']) && $_SESSION['register'] == 'failed'): ?>

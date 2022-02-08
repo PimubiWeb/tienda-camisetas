@@ -14,11 +14,14 @@ class usuarioController{
 	public function save(){
 		if(isset($_POST)){
 			
+			//si existe me devuelves el contenido del post sino me devulves false
 			$nombre = isset($_POST['nombre']) ? $_POST['nombre'] : false;
 			$apellidos = isset($_POST['apellidos']) ? $_POST['apellidos'] : false;
 			$email = isset($_POST['email']) ? $_POST['email'] : false;
 			$password = isset($_POST['password']) ? $_POST['password'] : false;
 			
+
+			//validacion de los datos introducidos
 			if($nombre && $apellidos && $email && $password){
 				$usuario = new Usuario();
 				$usuario->setNombre($nombre);
@@ -51,9 +54,11 @@ class usuarioController{
 			
 			$identity = $usuario->login();
 			
+			//inicio de sesion con sesiones
 			if($identity && is_object($identity)){
 				$_SESSION['identity'] = $identity;
 				
+				//para ver si es admin
 				if($identity->rol == 'admin'){
 					$_SESSION['admin'] = true;
 				}
@@ -67,15 +72,19 @@ class usuarioController{
 	}
 	
 	public function logout(){
+
+		//si esta la sesion activa la cierro
 		if(isset($_SESSION['identity'])){
 			unset($_SESSION['identity']);
 		}
 		
+		//si esta la sesion activa de admin la cierro
 		if(isset($_SESSION['admin'])){
 			unset($_SESSION['admin']);
 		}
 		
+		//vuelvo al inicio
 		header("Location:".base_url);
 	}
 	
-} // fin clase
+} // fin de la clase
