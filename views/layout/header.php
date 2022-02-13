@@ -25,15 +25,18 @@
 						<a href="<?=base_url?>">Inicio</a>
 					</li>
 					
-					<li>
-					<?php	
+					
+					<?php
 					//LISTAMOS TODAS LAS CATEGORIAS
 					for($i = 0 ; $i < count($categorias) ; $i++){
-						//echo "<a href='".base_url."categoria/ver&id=".$categorias[$i]['id'].">prueba</a>";
-						
+						echo "<li>";
+						echo "<a href='".base_url."categoria/ver&id=".$categorias[$i]['id']."'>";
+							echo "<h4>".$categorias[$i]['nombre']."</h4>";
+						echo "</a>";
+						echo "</li>";
 					}
 					?>
-					</li>
+					
 				</ul>
 			</nav>
 
