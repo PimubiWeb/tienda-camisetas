@@ -95,7 +95,7 @@
 
 			<!-- PIE DE PÁGINA -->
 			<footer id="footer">
-				<p>Desarrollado por Pabo Mochon &copy; <?= date('Y') ?></p>
+				<p>Desarrollado por Pabo Mochon Ubiña &copy; <?= date('Y') ?></p>
 			</footer>
 		</div>
 	</body>
