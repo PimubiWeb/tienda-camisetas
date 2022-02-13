@@ -24,11 +24,16 @@
 					<li>
 						<a href="<?=base_url?>">Inicio</a>
 					</li>
-					<?php while($cat = $categorias->fetch_object()): ?>
-						<li>
-							<a href="<?=base_url?>categoria/ver&id=<?=$cat->id?>"><?=$cat->nombre?></a>
-						</li>
-					<?php endwhile; ?>
+					
+
+					<?php
+					//LISTAMOS TODAS LAS CATEGORIAS
+					for($i = 0 ; $i < count($categorias) ; $i++){
+						echo "<li>";
+						echo "<a href='".base_url."categoria/ver&id=".$categorias[$i]['id'].">".$categorias[$i]['nombre']."</a>";
+						echo "</li>";
+					}
+					?>
 				</ul>
 			</nav>
 

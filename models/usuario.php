@@ -7,7 +7,6 @@ class Usuario{
 	private $email;
 	private $password;
 	private $rol;
-	private $imagen;
 	private $db;
 	
 	public function __construct() {
@@ -38,10 +37,6 @@ class Usuario{
 		return $this->rol;
 	}
 
-	function getImagen() {
-		return $this->imagen;
-	}
-
 	function setId($id) {
 		$this->id = $id;
 	}
@@ -66,12 +61,8 @@ class Usuario{
 		$this->rol = $rol;
 	}
 
-	function setImagen($imagen) {
-		$this->imagen = $imagen;
-	}
-
 	public function save(){
-		$sql = "INSERT INTO usuarios VALUES(NULL, '{$this->getNombre()}', '{$this->getApellidos()}', '{$this->getEmail()}', '{$this->getPassword()}', 'user', null);";
+		$sql = "INSERT INTO usuarios VALUES(NULL, '{$this->getNombre()}', '{$this->getApellidos()}', '{$this->getEmail()}', '{$this->getPassword()}', 'user');";
 		$save = $this->db->query($sql);
 		
 		$result = false;

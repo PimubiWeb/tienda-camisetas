@@ -1,6 +1,8 @@
 <?php
 
-class Categoria{
+require_once 'config/db.php';
+
+class Categoria extends Database{
 	private $id;
 	private $nombre;
 	private $db;
@@ -26,9 +28,28 @@ class Categoria{
 	}
 
 	public function getAll(){
-		$categorias = $this->db->query("SELECT * FROM categorias ORDER BY id DESC;");
-		return $categorias;
-	}
+		// $categorias = $this->db->query("SELECT * FROM categorias ORDER BY id DESC;");
+		// return $categorias;
+		$db = $this->connect();
+
+		try{
+			$sel = $db->prepare("SELECT * FROM categorias");
+			$sel->execute();
+			if($sel){
+				return $sel->fetchAll(PDO::FETCH_ASSOC);
+			}else{
+				return -1;
+			}
+	
+			$db = NULL;
+			unset($db);
+		}catch(PDOException $e){
+			//error
+			return -1;
+		}
+		
+    }
+	
 	
 	public function getOne(){
 		$categoria = $this->db->query("SELECT * FROM categorias WHERE id={$this->getId()}");
